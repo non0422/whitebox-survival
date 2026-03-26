@@ -1,0 +1,41 @@
+# Godot 4+ specific ignores
+.godot/
+.android/
+.import/
+.export/
+
+# Editor configuration
+.vscode/
+.idea/
+*.code-workspace
+
+# Imported files
+*.import
+*.import/
+
+# Exported project files
+export_presets.cfg
+export-pck/
+export-debug/
+export-releases/
+
+# Compiled files
+*.stamp
+*.uid
+.gd.uid
+
+# Editor metadata
+.metadata/
+
+# Optional: ignore specific scenes (if needed)
+# whitebox-survival/Whitebox_Survival.tscn
+
+# macOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+desktop.ini
+
+# Linux specific
+.directory
