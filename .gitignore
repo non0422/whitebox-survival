@@ -1,41 +1,15 @@
-# Godot 4+ specific ignores
-.godot/
-.android/
-.import/
-.export/
+# 忽略所有文件和目录
+*
 
-# Editor configuration
-.vscode/
-.idea/
-*.code-workspace
+# 但保留 .gd 脚本文件
+!*.gd
 
-# Imported files
-*.import
-*.import/
+# 保留 .gitignore 本身
+!.gitignore
 
-# Exported project files
-export_presets.cfg
-export-pck/
-export-debug/
-export-releases/
+# 保留 README 等文档（如果需要）
+!README.md
+!LICENSE
 
-# Compiled files
-*.stamp
-*.uid
-.gd.uid
-
-# Editor metadata
-.metadata/
-
-# Optional: ignore specific scenes (if needed)
-# whitebox-survival/Whitebox_Survival.tscn
-
-# macOS specific
-.DS_Store
-
-# Windows specific
-Thumbs.db
-desktop.ini
-
-# Linux specific
-.directory
+# 保留项目结构（空目录需要 .gitkeep）
+!**/.gitkeep
