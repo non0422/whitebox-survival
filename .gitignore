@@ -1,6 +1,8 @@
 # 忽略所有文件和目录
 *
-
+!*.png
+!*.jpg
+!*.jpeg
 # 但保留 .gd 脚本文件
 !*.gd
 
@@ -8,7 +10,7 @@
 !.gitignore
 
 # 保留 README 等文档（如果需要）
-!README.md
+!README
 !LICENSE
 !*.md
 

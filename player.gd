@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #实例话一个子弹场景
 
-@onready var bullet_scene = preload("res://bullet.tscn")
+var bullet_scene = preload("res://bullet.tscn")
 
 const SPEED = 300
 #移动
@@ -21,7 +21,7 @@ func _input(event):
 func shoot():
 	var bullet = bullet_scene.instantiate()
 	#设置子弹位置为枪口位置
-	bullet.global_position = position
+	bullet.global_position =global_position
 	#设置子弹方向为玩家朝向
 	bullet.direction = Vector2.RIGHT.rotated(rotation)
 	#将子弹添加到场景树中
