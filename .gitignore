@@ -10,6 +10,7 @@
 # 保留 README 等文档（如果需要）
 !README.md
 !LICENSE
+!*.md
 
 # 保留项目结构（空目录需要 .gitkeep）
 !**/.gitkeep
