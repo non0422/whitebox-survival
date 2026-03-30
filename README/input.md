@@ -71,3 +71,12 @@ unhandled 就是在确定没有外部介入时才触发的功能
 
 
 意思是input一般是控制ui部分的  当有外部打扰的时候 input会介入   unhandled就是在确定没有外部介入时才触发的功能
+
+
+
+1 enemy有collisionShape和colorRect节点，其下挂载了所谓的伤害机制hurtboxcomponet和healthcomponet节点
+
+2 bullet设置在layer在第4层Mask设置在第三层
+其中检测enemy的伤害机制hurtbox的layer也在第三层。意思就是layer就是告诉自己在哪一层，Mask就是我能与哪一层的layer相碰
+
+3 这个在里面加一个if判断方法来检测这个传进来的类有没有这个方法，如果有的话就是调用这个类里面的方法，执行这个函数。差不多就是同area类型会发生碰撞检测，带着固定的伤害值，去调用同类的方法来传递给敌人，这些都发生在伤害机制中，不同类型的节点也可以复用该伤害机制
