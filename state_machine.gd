@@ -11,20 +11,20 @@ func _ready() -> void:
     #将所有子节点添加到状态字典中
     for child in get_children():
         if child is State:
-            states[child.name] = child
+            states[child.name.to_lower()] = child
             child.transitioned.connect(_on_state_transitioned)  #连接状态转换信号
     #设置初始状态
     if initial_state:
-        initial_state._enter()
         current_state = initial_state  
+        current_state._enter()  #进入初始状态
 
 func _physics_process(delta: float) -> void:
     if current_state:
-        current_state._physics_process(delta)
+        current_state._physics_update(delta)
 
 func _process(delta: float) -> void:
     if current_state:
-        current_state.update(delta)
+        current_state._update(delta)
 
 
 func _on_state_transitioned(state:State, new_state_name:String) -> void:
