@@ -2,29 +2,31 @@ extends State
 class_name Chase
 
 @export var enemy: CharacterBody2D
-@export var move_speed: float = 200.0
 @export var player: Node2D   # Inspector 里拖 Player 节点
-
-var player_root: Node2D       # 用来计算 global_position
+@export var move_speed: float = 200.0
+@export var attack_range: float = 50.0
 
 func _enter():
     print("进入 Chase 状态")
-
-    if player:
-        player_root = player  # 直接用 Inspector 拖的 Player 节点
-        print("player 已赋值，player_root:", player_root)
-    else:
-        print("player 为空！请检查赋值")
-
-func _physics_update(_delta: float):
-    if not enemy or not player_root:
+    if not player:
+        print("没有设置 player,无法追踪")
         return
 
-    var direction = (player_root.global_position - enemy.global_position).normalized()
+func _physics_update(_delta: float):
+    if not enemy or not player:
+        return
+
+    var direction = (player.global_position - enemy.global_position).normalized()
     enemy.velocity = direction * move_speed
     enemy.move_and_slide()
 
-    var dist = enemy.global_position.distance_to(player_root.global_position)
+    var dist = enemy.global_position.distance_to(player.global_position)
+
     if dist > 300:
         print("玩家跑太远，返回 Idle")
         transitioned.emit(self, "idle")
+
+    if dist < attack_range:
+        print("玩家进入攻击范围，准备攻击！")
+        # 这里可以发信号给大脑，切换到攻击状态
+        transitioned.emit(self, "attack")
