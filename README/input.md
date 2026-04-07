@@ -87,3 +87,10 @@ unhandled 就是在确定没有外部介入时才触发的功能
 2 health_component里面有声明了一个died信号  去enemy里面接收该信号就可以   当health发出信号  enemy就会接受该信号  然后执行queue_free  释放这个信号，这种就是死亡消失了。其他的动作都是这一样接受信号来做什么，相当于发出信号时就会执行这个函数方法
 
 3 先声明一个bool类型的is_died为false      在health_component里面的take_damage函数先加一个is_died判断是否需要执行以下代码还是直接跳出    在current_health判断下再加一条is_died=true   然后发出died.emit。这种类似于在前面先判断需要执行这个函数，下面就是判断需不需要上锁，锁的是这个函数。在发出这个死亡信号同时给这个函数上锁，之后就不会再执行了
+
+
+
+1 先遍历大脑下的所有子节点，然后设置一个初始子节点下一个idle状态
+
+2 用的是_process 但一般都是用的是_physic_process来physic_update
+原因是每时刻都要检测是否需要转换状态
